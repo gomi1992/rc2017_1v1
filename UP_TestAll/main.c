@@ -10,25 +10,24 @@
 
 
 u8 GLOBAL_SENSOR_LIST[4] = {0, 1, 2, 3};
-extern u8 G4S_GRAY_SCALE_SENSOR_LIST[4];
+extern u8 G4S_GrayScaleSensorList[4];
 
 void init() {
-    G4S_GRAY_SCALE_SENSOR_LIST[0] = GLOBAL_SENSOR_LIST[0];
-    G4S_GRAY_SCALE_SENSOR_LIST[1] = GLOBAL_SENSOR_LIST[1];
-    G4S_GRAY_SCALE_SENSOR_LIST[2] = GLOBAL_SENSOR_LIST[2];
-    G4S_GRAY_SCALE_SENSOR_LIST[3] = GLOBAL_SENSOR_LIST[3];
-    SM_init();
+    G4S_GrayScaleSensorList[0] = GLOBAL_SENSOR_LIST[0];
+    G4S_GrayScaleSensorList[1] = GLOBAL_SENSOR_LIST[1];
+    G4S_GrayScaleSensorList[2] = GLOBAL_SENSOR_LIST[2];
+    G4S_GrayScaleSensorList[3] = GLOBAL_SENSOR_LIST[3];
+    SM_Init();
 }
 
 int main(void) {
-    int next_direction = DIRECTION_NONE, moto_speed = 550;
 
 #ifdef DEBUG_ON
     UP_Bluetooth_EnableIT();
 #endif
 
     UP_Timer_EnableIT(0, 5000);//5ms
-    UP_Timer_SetHadler(0, G4S_update_gray_scale_sensor);
+    UP_Timer_SetHadler(0, G4S_UpdateGrayScaleSensor);
     UP_System_Init();
     UP_delay_ms(100);
 

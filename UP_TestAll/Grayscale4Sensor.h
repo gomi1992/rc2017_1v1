@@ -10,10 +10,10 @@
 #define G4S_GRAY_SCALE_SENSOR_LEFT 2
 #define G4S_GRAY_SCALE_SENSOR_RIGHT 3
 
-void G4S_update_gray_scale_sensor();
+void G4S_UpdateGrayScaleSensor();
 
-int G4S_direction_to_centre();
+int G4S_Direction2Centre();
 
-extern int G4SNextDirection;
+extern int G4S_next_direction;
 
 #endif //RC2017_1V1_GRAYSCALE4SENSOR_H
