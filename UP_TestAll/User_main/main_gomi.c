@@ -17,10 +17,10 @@
 //12-13 横倾角，竖倾角
 u8 GLOBAL_SENSOR_LIST[14] = {0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15, 8, 9};
 
-const int kG4S_SensorData[4][G4S_SENSOR_DATA_LENGTH] = {{3540, 3500, 3400, 3240},
-                                                        {3450, 3420, 3220, 3100},
-                                                        {3460, 3400, 3270, 3000},
-                                                        {3400, 3320, 3170, 2950}};
+const int kG4S_SensorData[4][G4S_SENSOR_DATA_LENGTH] = {{3500, 3470, 3400, 3350},
+                                                        {3450, 3410, 3360, 3300},
+                                                        {3429, 3380, 3362, 3308},
+                                                        {3360, 3328, 3250, 3200}};
 
 void init() {
     G4S_GrayScaleSensorList[0] = GLOBAL_SENSOR_LIST[0];

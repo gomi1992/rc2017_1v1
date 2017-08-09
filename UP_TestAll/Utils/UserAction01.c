@@ -71,22 +71,22 @@ void UA01_GetOnStage(int direction) {
         UA01_hand_motor_speed[2] = -MOTOR_SPEED;
         UA01_hand_motor_speed[3] = MOTOR_SPEED;
         UP_CDS_Set4MotoSpeed(UA01_hand_motor_list, UA01_hand_motor_speed);//四电机速度初始化设置
-        SM_Move(DIRECTION_FORWARD, MOTOR_SPEED);    //MOTOR_SPEED速度向前
+        SM_Move(DIRECTION_FORWARD, MOTOR_SPEED - 100);    //MOTOR_SPEED速度向前
     } else {
         UA01_hand_motor_speed[0] = -MOTOR_SPEED;
         UA01_hand_motor_speed[1] = MOTOR_SPEED;
         UA01_hand_motor_speed[2] = MOTOR_SPEED;
         UA01_hand_motor_speed[3] = -MOTOR_SPEED;
         UP_CDS_Set4MotoSpeed(UA01_hand_motor_list, UA01_hand_motor_speed);
-        SM_Move(DIRECTION_BACK, MOTOR_SPEED);   //MOTOR_SPEED速度向后
+        SM_Move(DIRECTION_BACK, MOTOR_SPEED - 100);   //MOTOR_SPEED速度向后
     }
     UP_delay_ms(400);
     if (direction == DIRECTION_FORWARD) UA01_FrontArmDown();
     else UA01_BackArmDown();
-    UP_delay_ms(1000);
+    UP_delay_ms(800);
     if (direction == DIRECTION_FORWARD) UA01_BackArmDown();
     else UA01_FrontArmDown();
-    UP_delay_ms(1300);
+    UP_delay_ms(1000);
     if (direction == DIRECTION_FORWARD) UA01_FrontArmUp();
     else UA01_BackArmUp();
     if (direction == DIRECTION_FORWARD) UA01_BackArmUp();
