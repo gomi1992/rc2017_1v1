@@ -4,7 +4,7 @@
 #include "../Utils/ServoMove.h"
 #include "../Utils/CheckState.h"
 #include "../Utils/UserAction01.h"
-#include "utils.h"
+#include "../Utils/utils.h"
 
 
 #ifdef DEBUG_ON
@@ -69,6 +69,7 @@ int main(void) {
 
             under_stage_count = 0;
             G4S_enable(ENABLE);
+            CS_enable(DISABLE);
 
             UA01_PreAttack();
             if (G4S_danger) {
@@ -121,6 +122,7 @@ int main(void) {
 
         debug_bluetooth_puts("Under stage\n");
         G4S_enable(DISABLE);
+        CS_enable(DISABLE);
         SM_Move(DIRECTION_FORWARD, 0);
         switch (CS_State) {
             case STATE_UNDER_STAGE_FACE_TO_STAGE:
@@ -130,7 +132,6 @@ int main(void) {
                 if (under_stage_count > UNDER_COUNT) {
                     UA01_PreAction();
                     debug_bluetooth_puts("get on stage\n");
-                    G4S_enable(DISABLE);
                     under_stage_count = 0;
                     UA01_GetOnStage(UA01_FindStage());
                 }
@@ -140,7 +141,6 @@ int main(void) {
                 under_stage_count++;
                 if (under_stage_count > UNDER_COUNT) {
                     UA01_PreAction();
-                    G4S_enable(DISABLE);
                     under_stage_count = 0;
                     UA01_FrontArmDown();
                     UA01_BackArmDown();
@@ -150,7 +150,6 @@ int main(void) {
                 under_stage_count++;
                 if (under_stage_count > UNDER_COUNT) {
                     UA01_PreAction();
-                    G4S_enable(DISABLE);
                     under_stage_count = 0;
                     UA01_GetOnStage(DIRECTION_FORWARD);
                 }
@@ -159,7 +158,6 @@ int main(void) {
                 under_stage_count++;
                 if (under_stage_count > UNDER_COUNT) {
                     UA01_PreAction();
-                    G4S_enable(DISABLE);
                     under_stage_count = 0;
                     UA01_GetOnStage(DIRECTION_BACK);
                 }

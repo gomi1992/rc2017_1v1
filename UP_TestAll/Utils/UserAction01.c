@@ -10,6 +10,8 @@
 #include "CheckState.h"
 #include "stdlib.h"
 
+int UA01_isAttacking = 0;
+
 u8 UA01_arm_servo_list[4] = {3, 4, 5, 6};//电机编号
 u8 UA01_hand_motor_list[4] = {7, 8, 9, 10};//手臂编号
 s16 UA01_hand_motor_speed[4] = {0, 0, 0, 0};//速度
@@ -142,6 +144,7 @@ void UA01_PreAttack() {
 
 //攻击
 void UA01_Attack(int direction) {
+    UA01_isAttacking = 1;
     UA01_PreAttack();
     if (direction == DIRECTION_FORWARD) {
         UA01_hand_motor_speed[0] = MOTOR_SPEED_ATTACK;
@@ -161,6 +164,7 @@ void UA01_Attack(int direction) {
 }
 
 void UA01_StopAttack() {
+    UA01_isAttacking = 0;
     int i = 0;
     for (i = 0; i < 4; i++) {
         UA01_hand_motor_speed[i] = 0;

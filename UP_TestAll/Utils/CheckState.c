@@ -5,6 +5,8 @@
 #include "CheckState.h"
 #include "common.h"
 #include "utils.h"
+#include "ServoMove.h"
+#include "UserAction01.h"
 
 u8 CS_IRSensorList[8];
 u8 CS_IRSensorData[8];
@@ -67,6 +69,7 @@ void CS_CheckEnemyExtiFrontLeft() {
         CS_EnemyState &= 0xE;//&0b1110
     } else {
         CS_EnemyState |= 0x1;//0b0001
+        if (CS_Enable == ENABLE && UA01_isAttacking == 0) SM_Move(DIRECTION_FORWARD, 0);
     }
 }
 
@@ -76,6 +79,7 @@ void CS_CheckEnemyExtiFrontRight() {
         CS_EnemyState &= 0xD;//&0b1101
     } else {
         CS_EnemyState |= 0x2;//0b0010
+        if (CS_Enable == ENABLE && UA01_isAttacking == 0) SM_Move(DIRECTION_FORWARD, 0);
     }
 }
 
@@ -85,6 +89,7 @@ void CS_CheckEnemyExtiBackLeft() {
         CS_EnemyState &= 0xB;//&0b1011
     } else {
         CS_EnemyState |= 0x4;//0b0100
+        if (CS_Enable == ENABLE && UA01_isAttacking == 0) SM_Move(DIRECTION_FORWARD, 0);
     }
 }
 
@@ -94,12 +99,13 @@ void CS_CheckEnemyExtiBackRight() {
         CS_EnemyState &= 0x7;//&0b0111
     } else {
         CS_EnemyState |= 0x8;//0b1000
+        if (CS_Enable == ENABLE && UA01_isAttacking == 0) SM_Move(DIRECTION_FORWARD, 0);
     }
 }
 
 void CS_CheckState() {
-    if (CS_Enable == DISABLE)
-        return;
+//    if (CS_Enable == DISABLE)
+//        return;
     int i = 0;
     for (i = 0; i < 8; i++) {
         CS_IRSensorData[i] = UP_ADC_GetIO(CS_IRSensorList[i]);

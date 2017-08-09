@@ -26,7 +26,7 @@ int update_count = 0;
 int rand_move_flag = 0;
 
 void G4S_init() {
-    UP_Timer_EnableIT(0, 2000);//5ms    设置定时器
+    UP_Timer_EnableIT(0, 5000);//5ms    设置定时器
     UP_Timer_SetHadler(0, G4S_UpdateGrayScaleSensor);//定时器中断 四灰度检测
     debug_bluetooth_puts("g4s init\n");
 }
