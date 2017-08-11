@@ -113,8 +113,12 @@ int G4S_Direction2Centre() {
     G4S_danger = 0;
     //find the nearest value in the array
     for (i = 0; i < 4; i++) {
-        G4S_direction_data[i] = find_nearest_in_array_descend(G4S_gray_scale_origin_data[i], kG4S_SensorData[i], 0,
-                                                              G4S_SENSOR_DATA_LENGTH);
+//        G4S_direction_data[i] = find_nearest_in_array_descend(G4S_gray_scale_origin_data[i], kG4S_SensorData[i], 0,
+//                                                              G4S_SENSOR_DATA_LENGTH);
+//        G4S_direction_data[i] = find_in_array_descend_upper(G4S_gray_scale_origin_data[i], kG4S_SensorData[i], 0,
+//                                                            G4S_SENSOR_DATA_LENGTH);
+        G4S_direction_data[i] = find_in_array_descend_lower(G4S_gray_scale_origin_data[i], kG4S_SensorData[i], 0,
+                                                            G4S_SENSOR_DATA_LENGTH);
         if (G4S_direction_data[i] > 2) {
             G4S_danger = 1;
         }
