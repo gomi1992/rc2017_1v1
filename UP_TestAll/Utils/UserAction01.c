@@ -136,16 +136,34 @@ void UA01_PreAttack() {
     for (i = 0; i < 4; i++) {
         UA01_hand_motor_speed[i] = 0;
     }
-    UP_CDS_SetAngle(UA01_arm_servo_list[0], 581, 512);
-    UP_CDS_SetAngle(UA01_arm_servo_list[1], 428, 512);
-    UP_CDS_SetAngle(UA01_arm_servo_list[2], 385, 512);
-    UP_CDS_SetAngle(UA01_arm_servo_list[3], 598, 512);
+    UP_CDS_SetAngle(UA01_arm_servo_list[0], 561, 512);
+    UP_CDS_SetAngle(UA01_arm_servo_list[1], 448, 512);
+    UP_CDS_SetAngle(UA01_arm_servo_list[2], 405, 512);
+    UP_CDS_SetAngle(UA01_arm_servo_list[3], 578, 512);
+}
+
+void UA01_PreAttackDirection(int direction) {
+    int i = 0;
+    for (i = 0; i < 4; i++) {
+        UA01_hand_motor_speed[i] = 0;
+    }
+    if(direction == DIRECTION_FORWARD) {
+        UP_CDS_SetAngle(UA01_arm_servo_list[0], 561, 512);
+        UP_CDS_SetAngle(UA01_arm_servo_list[1], 448, 512);
+        UP_CDS_SetAngle(UA01_arm_servo_list[2], 385, 512);
+        UP_CDS_SetAngle(UA01_arm_servo_list[3], 598, 512);
+    } else{
+        UP_CDS_SetAngle(UA01_arm_servo_list[0], 581, 512);
+        UP_CDS_SetAngle(UA01_arm_servo_list[1], 428, 512);
+        UP_CDS_SetAngle(UA01_arm_servo_list[2], 405, 512);
+        UP_CDS_SetAngle(UA01_arm_servo_list[3], 578, 512);
+    }
 }
 
 //攻击
 void UA01_Attack(int direction) {
     UA01_isAttacking = 1;
-    UA01_PreAttack();
+    UA01_PreAttackDirection(direction);
     if (direction == DIRECTION_FORWARD) {
         UA01_hand_motor_speed[0] = MOTOR_SPEED_ATTACK;
         UA01_hand_motor_speed[1] = -MOTOR_SPEED_ATTACK;

@@ -25,6 +25,8 @@ int UA01_FindStage();
 
 void UA01_PreAttack();
 
+void UA01_PreAttackDirection(int direction);
+
 void UA01_Attack(int direction);
 
 void UA01_StopAttack();
