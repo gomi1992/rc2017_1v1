@@ -91,6 +91,7 @@ void UA01_GetOnStage(int direction) {
     else UA01_BackArmUp();
     if (direction == DIRECTION_FORWARD) UA01_BackArmUp();
     else UA01_FrontArmUp();
+    SM_Move(DIRECTION_FORWARD, 500);
     UP_delay_ms(400);
 }
 
@@ -147,12 +148,12 @@ void UA01_PreAttackDirection(int direction) {
     for (i = 0; i < 4; i++) {
         UA01_hand_motor_speed[i] = 0;
     }
-    if(direction == DIRECTION_FORWARD) {
+    if (direction == DIRECTION_FORWARD) {
         UP_CDS_SetAngle(UA01_arm_servo_list[0], 561, 512);
         UP_CDS_SetAngle(UA01_arm_servo_list[1], 448, 512);
         UP_CDS_SetAngle(UA01_arm_servo_list[2], 385, 512);
         UP_CDS_SetAngle(UA01_arm_servo_list[3], 598, 512);
-    } else{
+    } else {
         UP_CDS_SetAngle(UA01_arm_servo_list[0], 581, 512);
         UP_CDS_SetAngle(UA01_arm_servo_list[1], 428, 512);
         UP_CDS_SetAngle(UA01_arm_servo_list[2], 405, 512);

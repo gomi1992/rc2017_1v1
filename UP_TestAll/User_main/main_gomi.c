@@ -59,7 +59,10 @@ int main(void) {
 
     UA01_GetOnStage(DIRECTION_FORWARD);//上台
 
-    G4S_enable(ENABLE); //使能
+    SM_TurnAround(DIRECTION_RIGHT, DIRECTION_FORWARD, 500, 200);
+    UP_delay_ms(500);
+
+//    G4S_enable(ENABLE); //使能
     CS_enable(ENABLE);  //使能
 
     int under_stage_count = 0;  //擂台计数
@@ -68,10 +71,12 @@ int main(void) {
             debug_bluetooth_puts("On stage\n");
 
             under_stage_count = 0;
-            G4S_enable(ENABLE);
-            CS_enable(DISABLE);
+//            G4S_enable(ENABLE);
+            CS_enable(ENABLE);
 
             UA01_PreAttack();
+            SM_Spin(DIRECTION_RIGHT, 1000);
+            continue;
             if (G4S_danger) {
                 debug_bluetooth_puts("g4s danger\n");
                 UA01_StopAttack();
@@ -121,8 +126,8 @@ int main(void) {
         }
 
         debug_bluetooth_puts("Under stage\n");
-        G4S_enable(DISABLE);
-        CS_enable(DISABLE);
+//        G4S_enable(DISABLE);
+        CS_enable(ENABLE);
         SM_Move(DIRECTION_FORWARD, 0);
         switch (CS_State) {
             case STATE_UNDER_STAGE_FACE_TO_STAGE:
