@@ -5,6 +5,7 @@
 #include "../Utils/CheckState.h"
 #include "../Utils/UserAction01.h"
 #include "../Utils/utils.h"
+#include "../Utils/My_PWM.h"
 
 
 #ifdef DEBUG_ON
@@ -54,6 +55,14 @@ int main(void) {
     UP_delay_ms(100);
 
     init();     //初始化
+
+    My_PWM_Init();
+    My_PWM_Enable(2, ENABLE);
+    My_PWM_Enable(3, ENABLE);
+    My_PWM_SetDutyTime(2, 2000);
+    My_PWM_SetDutyTime(3, 3000);
+
+    while (1);
 
     while (!(UP_ADC_GetIO(CS_IRSensorList[2]) == 0 && UP_ADC_GetIO(CS_IRSensorList[3]) == 0));
 

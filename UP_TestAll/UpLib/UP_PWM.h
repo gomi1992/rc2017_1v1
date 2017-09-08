@@ -1,6 +1,6 @@
 /******************************************************************/
-//	Copyright (C), 2011-2012, ±±¾©²©´´ 
-//  Author   	  : ³ÂÖĞÔª  
+//	Copyright (C), 2011-2012, åŒ—äº¬åšåˆ› 
+//  Author   	  : é™ˆä¸­å…ƒ  
 //  Update Date   : 2011/06/12
 //  Version   	  : 1.2            
 //  Description   :  
@@ -9,11 +9,11 @@
 #ifndef PWM_H
 #define PWM_H
 
-extern void UP_PWM_Init(void);								//PWMÏà¹Ø³õÊ¼»¯
-extern void UP_PWM_Enable(u8 Channel, FunctionalState NewState);	//Ê¹ÄÜPWMÄ£Ê½Êä³ö£¬Í¨µÀ0~3£¬×´Ì¬ENABLE»òDISABLE
-extern void UP_PWM_SetDutyTime(u8 Channel, u16 DutyTime);	//ÉèÖÃ¸ßµçÆ½Ê±³¤0~4095¶ÔÓ¦0%~100%
-extern void UP_PWM_SetFrequency(u32 Frequency);				//ÉèÖÃÆµÂÊ£¨Hz£©£¬50~1000000
-extern void UP_PWM_SetIO(u8 Channel, u8 Value);				//ÉèÖÃPWM¶Ë¿ÚIOÊä³öµçÆ½£¬Í¨µÀ0~3£¬Öµ0»ò1
+extern void UP_PWM_Init(void);								//PWMç›¸å…³åˆå§‹åŒ–
+extern void UP_PWM_Enable(u8 Channel, FunctionalState NewState);	//ä½¿èƒ½PWMæ¨¡å¼è¾“å‡ºï¼Œé€šé“0~3ï¼ŒçŠ¶æ€ENABLEæˆ–DISABLE
+extern void UP_PWM_SetDutyTime(u8 Channel, u16 DutyTime);	//è®¾ç½®é«˜ç”µå¹³æ—¶é•¿0~4095å¯¹åº”0%~100%
+extern void UP_PWM_SetFrequency(u32 Frequency);				//è®¾ç½®é¢‘ç‡ï¼ˆHzï¼‰ï¼Œ50~1000000
+extern void UP_PWM_SetIO(u8 Channel, u8 Value);				//è®¾ç½®PWMç«¯å£IOè¾“å‡ºç”µå¹³ï¼Œé€šé“0~3ï¼Œå€¼0æˆ–1
 
 #endif
 
